@@ -13,6 +13,8 @@ As an independent consultant, I turn ideas, messy processes, and technical chall
 
 Currently consulting, building, automating, and occasionally reminding production systems who's in charge.
 
+I'm particularly drawn to Ruby, Rust, Haskell, Clojure, Go, and Python—different ways of thinking about problems, and plenty of excuses to keep learning.
+
 ## A few things I've built
 
 - [Onelynk](https://onelynk.io) — A bulk SMS platform that helps organisations reach their customers. Contact lists, scheduled campaigns, and delivery tracking, without the hassle of integrating with individual mobile operators.
