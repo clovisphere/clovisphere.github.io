@@ -1,6 +1,6 @@
 # clovisphere.github.io
 
-My little corner of the web. A personal site for Clovis Mugaruka (Clov), an independent software engineer based in Nairobi, Kenya.
+My little corner of the web.
 
 **[Visit the site →](https://clovisphere.github.io/)**
 
