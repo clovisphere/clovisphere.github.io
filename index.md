@@ -18,6 +18,7 @@ Currently consulting, building, automating, and occasionally reminding productio
 - [Onelynk](https://onelynk.io) — A bulk SMS platform that helps organisations reach their customers. Contact lists, scheduled campaigns, and delivery tracking, without the hassle of integrating with individual mobile operators.
 - [ChezaCash — Aurora & Astra](https://chezacash.com) — The backend services behind ChezaCash's M-Pesa payments. Aurora handles deposits and withdrawals; Astra records payment confirmations and keeps the platform in sync. Built with Python, Ruby, and PostgreSQL.
 - [Alice](https://github.com/clovisphere/alice) — A Go service connecting KRA and M-Pesa to automate tax-remittance workflows, with payment processing and traceable records.
+- [Omar](https://github.com/clovisphere/omar) — An open-source AI assistant exploring spiritual and philosophical questions. Built with Python and Google ADK, it routes questions to specialist agents across faiths and philosophical traditions. A work in progress, with CLI and Telegram interfaces.
 
 ## Curiosity projects
 
