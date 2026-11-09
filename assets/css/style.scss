@@ -5,7 +5,7 @@
 
 $ink: #25332f;
 $accent: #176653;
-$paper: #f8f7f2;
+$paper: #ffffff;
 
 body {
   background: $paper;
@@ -121,7 +121,7 @@ a:focus-visible { outline: 2px solid $accent; outline-offset: 5px; border-radius
       font-size: 15px;
       line-height: 1.75;
       padding: 20px;
-      background: #fffefa;
+      background: #f8faf9;
       border: 1px solid #e1e5dc;
       border-radius: 14px;
       box-shadow: 0 3px 12px rgba(37, 51, 47, 0.025);
