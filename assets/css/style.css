@@ -12,9 +12,9 @@ p { margin: 0 0 14px; }
 .name { font-size: 18px; font-weight: 650; letter-spacing: -0.4px; line-height: 1.4; margin-bottom: 5px; }
 .role, .location { font-size: 14px; margin: 0; color: var(--muted); }
 .profile nav { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 0; margin-top: 18px; }
-.profile nav a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--ink); border-radius: 6px; }
+.profile nav a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 44px; color: var(--ink); border-radius: 6px; }
 .profile nav a:hover { color: var(--accent); }
-.profile nav svg { display: block; flex-shrink: 0; }
+.profile nav svg { display: block; flex-shrink: 0; width: 28px; height: 28px; }
 main { min-width: 0; }
 h1 { font-size: 34px; line-height: 1.2; letter-spacing: -1.2px; font-weight: 650; margin: 0 0 22px; }
 h2 { font-size: 13px; font-weight: 650; letter-spacing: 1.2px; text-transform: uppercase; line-height: 1.5; margin: 0 0 22px; color: var(--muted); }
