@@ -1,0 +1,25 @@
+title: Clovis Mugaruka
+description: Software engineer. Backend builder. Automation enthusiast.
+url: "https://clovisphere.github.io"
+baseurl: "/clovisphere"
+remote_theme: samarsault/plainwhite-jekyll
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-feed
+
+plainwhite:
+  name: Clovis Mugaruka
+  tagline: Software engineer. Backend builder. Automation enthusiast.
+  portfolio_image: assets/profile.jpg
+  html_lang: en
+  date_format: "%b %-d, %Y"
+  social_links:
+    github: clovisphere
+    linkedIn: in/clovis-mugaruka-429769132/
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
