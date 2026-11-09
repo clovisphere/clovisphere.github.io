@@ -3,7 +3,7 @@ layout: page
 title: Clovis Mugaruka
 ---
 
-# Hi, I'm Clovis.
+# Hey, I'm Clov.
 
 Software engineer. Backend builder. Automation enthusiast. Based in Nairobi, Kenya.
 
