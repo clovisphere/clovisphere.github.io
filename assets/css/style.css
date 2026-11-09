@@ -11,7 +11,7 @@ p { margin: 0 0 14px; }
 .profile img { display: block; width: 112px; height: 112px; border-radius: 50%; object-fit: cover; margin-bottom: 24px; }
 .name { font-size: 18px; font-weight: 650; letter-spacing: -0.4px; line-height: 1.4; margin-bottom: 5px; }
 .role, .location { font-size: 14px; margin: 0; color: var(--muted); }
-.profile nav { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 8px; margin-top: 18px; }
+.profile nav { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 0; margin-top: 18px; }
 .profile nav a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--ink); border-radius: 6px; }
 .profile nav a:hover { color: var(--accent); }
 .profile nav svg { display: block; flex-shrink: 0; }
@@ -37,7 +37,7 @@ footer { border-top: 1px solid var(--line); margin-top: 32px; padding-top: 22px;
   .profile img { width: 64px; height: 64px; margin: 0; }
   .name { font-size: 18px; margin-bottom: 2px; }
   .role, .location { font-size: 13px; line-height: 1.6; }
-  .profile nav { grid-column: 1 / -1; gap: 8px; margin-top: 12px; }
+  .profile nav { grid-column: 1 / -1; gap: 0; margin-top: 12px; }
   h1 { font-size: 32px; margin-bottom: 18px; }
   h2 { margin-bottom: 18px; }
   section + section { margin-top: 28px; padding-top: 24px; }
