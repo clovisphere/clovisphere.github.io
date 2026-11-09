@@ -64,6 +64,8 @@ main.container {
   ul { list-style: none; padding: 0; margin: 20px 0 0; }
   li { border-top: 1px solid #d8dfd7; padding: 18px 0; font-size: 15px; }
   li a { font-weight: 650; }
+  li p:first-child { margin-bottom: 8px; }
+  li p:last-child { margin-bottom: 0; }
 }
 
 a:focus-visible { outline: 2px solid $accent; outline-offset: 5px; border-radius: 2px; }
@@ -110,11 +112,23 @@ a:focus-visible { outline: 2px solid $accent; outline-offset: 5px; border-radius
     font-size: 16px;
     line-height: 1.75;
     overflow-wrap: break-word;
-    h1 { font-size: 36px; letter-spacing: -1.3px; margin-bottom: 20px; }
+    h1 { font-size: 40px; letter-spacing: -1.8px; margin-bottom: 20px; }
+    h1 + p { font-size: 18px; line-height: 1.6; color: $accent; padding-bottom: 20px; border-bottom: 1px solid #d8dfd7; margin-bottom: 24px; }
     h2 { font-size: 22px; line-height: 1.35; margin-top: 36px; margin-bottom: 16px; }
     p { margin-bottom: 18px; }
-    li { font-size: 16px; line-height: 1.75; padding: 20px 0; }
-    li a { text-decoration-thickness: 1px; }
+    ul { display: grid; gap: 14px; margin-top: 20px; }
+    li {
+      font-size: 15px;
+      line-height: 1.75;
+      padding: 20px;
+      background: #fffefa;
+      border: 1px solid #e1e5dc;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(37, 51, 47, 0.025);
+      p { color: #4a5a52; }
+    }
+    li a { display: block; padding: 2px 0; font-size: 18px; line-height: 1.4; letter-spacing: -0.3px; text-decoration: none; }
+    li a::after { content: " ↗"; color: $accent; font-weight: 400; }
   }
 }
 
