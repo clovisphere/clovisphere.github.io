@@ -13,7 +13,7 @@ As an independent consultant, I turn ideas, messy processes, and technical chall
 
 Currently consulting, building, automating, and occasionally reminding production systems who's in charge.
 
-I'm particularly drawn to Ruby, Rust, Haskell, Clojure, Go, and Python—different ways of thinking about problems, and plenty of excuses to keep learning.
+I'm particularly drawn to [Ruby](https://www.ruby-lang.org/), [Rust](https://rust-lang.org/), [Haskell](https://www.haskell.org/), [Clojure](https://clojure.org/), [Go](https://go.dev/), and [Python](https://www.python.org/)—different ways of thinking about problems, and plenty of excuses to keep learning.
 
 ## A few things I've built
 
