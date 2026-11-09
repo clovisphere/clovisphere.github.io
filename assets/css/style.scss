@@ -74,12 +74,53 @@ a:focus-visible { outline: 2px solid $accent; outline-offset: 5px; border-radius
   main.container {
     padding: 0 24px;
     gap: 0;
-    .about { position: static; width: 100%; max-width: none; margin: 38px 0 32px; }
-    .about img { width: 108px; height: 108px; }
-    .about .tagline { max-width: 280px; margin-bottom: 0; }
-    .about .about-footer { margin-bottom: 0; }
+    .about {
+      position: static;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      column-gap: 16px;
+      row-gap: 4px;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      margin: 28px 0 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #d8dfd7;
+      text-align: left;
+      align-items: center;
+      .about-header, .about-header .about-title { display: contents; }
+      .about-title > a { grid-column: 1; grid-row: 1 / 3; line-height: 0; }
+      img { display: block; width: 64px; height: 64px; border-width: 3px; box-shadow: 0 3px 12px rgba(37, 51, 47, 0.08); }
+      h2 { grid-column: 2; align-self: end; margin: 0; font-size: 21px; line-height: 1.3; letter-spacing: -0.6px; }
+      .tagline { grid-column: 2; align-self: start; margin: 0; font-size: 14px; line-height: 1.5; text-align: left; }
+      .social {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+        gap: 4px;
+        margin: 12px 0 0 -8px;
+        a { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; margin: 0; }
+        li i { font-size: 25px; }
+      }
+      > p.about-footer { display: none; }
+    }
+    .content { width: 100%; }
   }
   .post-container { margin: 0 0 48px; }
-  .post { font-size: 16px; }
-  .post h1 { letter-spacing: -1.4px; }
+  .post {
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-wrap: break-word;
+    h1 { font-size: 36px; letter-spacing: -1.3px; margin-bottom: 20px; }
+    h2 { font-size: 22px; line-height: 1.35; margin-top: 36px; margin-bottom: 16px; }
+    p { margin-bottom: 18px; }
+    li { font-size: 16px; line-height: 1.75; padding: 20px 0; }
+    li a { text-decoration-thickness: 1px; }
+  }
+}
+
+@media (max-width: 360px) {
+  main.container { padding: 0 20px; }
+  main.container .about { column-gap: 12px; }
+  main.container .about h2 { font-size: 19px; }
+  .post h1 { font-size: 32px; }
 }
