@@ -10,7 +10,7 @@ plugins:
 
 plainwhite:
   name: Clovis Mugaruka
-  tagline: Software engineer. Backend builder. Automation enthusiast.
+  tagline: Software Engineer
   portfolio_image: assets/profile.jpg
   html_lang: en
   date_format: "%b %-d, %Y"
