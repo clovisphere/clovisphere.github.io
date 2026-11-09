@@ -1,8 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>Clov — c.</title>
-  <rect x="1" y="1" width="62" height="62" rx="19" fill="#123e33"/>
-  <path d="M20 2h24a18 18 0 0 1 18 18v3C47 14 23 12 2 27v-7A18 18 0 0 1 20 2Z" fill="#176653"/>
-  <rect x="1.5" y="1.5" width="61" height="61" rx="18.5" fill="none" stroke="#f8f7f2" stroke-opacity=".12"/>
-  <path d="M36 23a14 14 0 1 0 0 20" fill="none" stroke="#f8f7f2" stroke-width="8" stroke-linecap="round"/>
-  <circle cx="48" cy="45" r="5" fill="#f2bc70"/>
+  <title>Clov</title>
+  <rect width="64" height="64" rx="12" fill="#176653"/>
+  <path d="M40 22a14 14 0 1 0 0 20" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/>
 </svg>
