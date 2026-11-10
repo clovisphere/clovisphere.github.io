@@ -1,6 +1,6 @@
 # 🌍 clovisphere.github.io
 
-The personal site of Clovis Mugaruka, built in the **Swiss Signal** design: big type, hairline grids, a dark and light theme, and one accent colour. 🎨
+> Built in the **Swiss Signal** design: big type, hairline grids, a dark and light theme, and one accent colour. 🎨
 
 **[Visit the site →](https://www.clovisphere.com/)** 🚀
 
