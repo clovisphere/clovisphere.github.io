@@ -59,10 +59,11 @@ existing **Publish website** workflow.
 
 ## Behavior
 
-- **Theme:** follows the system setting; the toggle saves the choice in
+- **Theme:** dark by default for every visitor (revised from "follows the
+  system setting"); the toggle switches to light and saves the choice in
   `localStorage`.
 - **No JavaScript:** the page still reads fine; the first word shows and the
-  theme follows the system.
+  dark theme shows, and the toggle and hero button are hidden.
 - **Reduced motion:** animations and the caret blink are disabled.
 - **Accessibility:** skip link, visible focus styles, labelled toggle and
   cycle buttons, sufficient contrast in both themes.

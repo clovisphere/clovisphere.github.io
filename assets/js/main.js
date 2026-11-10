@@ -1,17 +1,16 @@
 /*
- * Small progressive enhancements. The page works without this file: the theme follows the
- * system setting and the hero shows its first word.
+ * Small progressive enhancements. The page works without this file: it shows the dark theme and
+ * the hero shows its first word (the toggle and hero button stay hidden without JavaScript).
  * Note: a saved theme is applied by the inline script in each page's <head>, before first paint,
  * so there is no flash of the wrong theme. This file only handles the toggle button.
  */
 (function () {
   var root = document.documentElement;
-  var media = window.matchMedia("(prefers-color-scheme: dark)");
   var toggle = document.getElementById("theme");
 
-  // The theme in effect: an explicit choice (data-theme) wins over the system setting.
+  // The theme in effect. Dark is the default; data-theme is "light" only after a choice (saved or just made).
   function effective() {
-    return root.dataset.theme || (media.matches ? "dark" : "light");
+    return root.dataset.theme || "dark";
   }
 
   // The button's accessible name says what clicking will do.
@@ -29,8 +28,6 @@
       try { localStorage.setItem("theme", next); } catch (e) { /* storage unavailable */ }
       syncLabel();
     });
-    // If the system theme changes while no choice is saved, keep the label accurate.
-    media.addEventListener("change", syncLabel);
     syncLabel();
   }
 

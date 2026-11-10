@@ -1,30 +1,21 @@
 /* Swiss Signal. Mobile-first: base rules target phones, min-width queries add the wider layouts.
-   Theming: the light palette is the default. Dark applies when the system prefers it and the visitor
-   has not picked a theme, or when the toggle sets data-theme="dark" on <html> (see assets/js/main.js). */
+   Theming: dark is the default for every visitor. Light applies only when the toggle sets
+   data-theme="light" on <html> (see assets/js/main.js); the choice is saved in localStorage. */
 :root {
-  /* --hi is the highlight colour: blue on light, lime on dark (lime text would be unreadable on white).
+  /* --hi is the highlight colour: lime on dark, blue on light (lime text would be unreadable on white).
      --accent and --pop stay fixed in both themes. --sun/--moon decide which toggle icon shows. */
-  --bg: #F2F1EC; --fg: #141416; --line: #141416; --muted: #4A4A48;
-  --hi: #2B4BFF; --band: #FFFFFF; --track: #D6D4CC; --body: #2E2E2C;
-  --accent: #2B4BFF; --pop: #D7F75B;
-  --sun: none; --moon: block;
-  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --sans: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
-  color-scheme: light;
-}
-/* System dark mode, only while no theme has been chosen explicitly */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --bg: #141416; --fg: #ECEBE6; --line: #34343A; --muted: #A3A29C;
-    --hi: #D7F75B; --band: #1C1C20; --track: #3A3A38; --body: #D9D7CF;
-    --sun: block; --moon: none; color-scheme: dark;
-  }
-}
-/* Dark mode chosen with the toggle (repeats the values above, since a selector cannot be shared with the media query) */
-:root[data-theme="dark"] {
   --bg: #141416; --fg: #ECEBE6; --line: #34343A; --muted: #A3A29C;
   --hi: #D7F75B; --band: #1C1C20; --track: #3A3A38; --body: #D9D7CF;
-  --sun: block; --moon: none; color-scheme: dark;
+  --accent: #2B4BFF; --pop: #D7F75B;
+  --sun: block; --moon: none;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #F2F1EC; --fg: #141416; --line: #141416; --muted: #4A4A48;
+  --hi: #2B4BFF; --band: #FFFFFF; --track: #D6D4CC; --body: #2E2E2C;
+  --sun: none; --moon: block; color-scheme: light;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -59,7 +50,11 @@ h1, h2, h3, p { margin: 0; }
 .bar nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 4px; }
 .bar nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; text-decoration: none; }
 /* Theme toggle: 44px hit area around a 36px visible circle */
-.theme { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 0; background: transparent; color: var(--fg); cursor: pointer; padding: 0; }
+/* The toggle and hero button need JavaScript, so they stay hidden until the .js class is set on <html> */
+.theme, .cycle { display: none; }
+.js .theme { display: inline-flex; }
+.js .cycle { display: flex; }
+.theme { width: 44px; height: 44px; align-items: center; justify-content: center; border: 0; background: transparent; color: var(--fg); cursor: pointer; padding: 0; }
 .theme span { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .25s ease; }
 .theme .sun { display: var(--sun); }
 .theme .moon { display: var(--moon); }
@@ -78,7 +73,7 @@ h1, h2, h3, p { margin: 0; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding-top: 24px; }
 .hero-foot p { flex: 1 1 320px; max-width: 640px; font-size: clamp(18px, 2.4vw, 22px); line-height: 1.45; }
-.cycle { width: 72px; height: 72px; border-radius: 50%; border: 1px solid var(--fg); background: transparent; color: var(--fg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform .2s ease; }
+.cycle { width: 72px; height: 72px; border-radius: 50%; border: 1px solid var(--fg); background: transparent; color: var(--fg); cursor: pointer; align-items: center; justify-content: center; transition: transform .2s ease; }
 
 /* About */
 .band { background: var(--band); border-block: 1px solid var(--line); }
@@ -111,16 +106,16 @@ h1, h2, h3, p { margin: 0; }
 .row .name { font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; letter-spacing: -.03em; }
 .row .desc { font-size: 16px; line-height: 1.5; opacity: .75; max-width: 60ch; }
 .row .stack { opacity: .75; }
-/* The arrow is added with CSS so it follows the stack text, or sits alone when a project has none */
-.row .stack::after { content: " ↗"; }
-/* On phones an empty stack would leave a lone arrow on its own line, so hide it */
-@media (max-width: 719px) { .row .stack:empty { display: none; } }
+/* Link arrow added with CSS so it follows the project name on every row, with or without a stack.
+   The second declaration marks it decorative (empty alt text) in browsers that support it. */
+.row .name::after { content: " ↗"; content: " ↗" / ""; font-weight: 400; font-size: .5em; letter-spacing: 0; vertical-align: .55em; }
 
 /* Contact */
 /* Contact block uses fixed light text on the blue accent, so it looks the same in both themes */
 .contact { background: var(--accent); color: #F2F1EC; }
 .contact .wrap { padding-top: 72px; padding-bottom: 28px; display: flex; flex-direction: column; gap: 40px; }
 .contact .big { font-weight: 800; font-size: clamp(40px, 11vw, 140px); line-height: .92; letter-spacing: -.05em; text-decoration: none; color: #F2F1EC; overflow-wrap: break-word; }
+h2.eyebrow { font-weight: 400; }
 .contact .big span { color: var(--pop); }
 .contact .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 24px; border-top: 1px solid #F2F1EC; padding-top: 12px; }
 .contact .foot span { display: flex; flex-wrap: wrap; gap: 0 8px; }

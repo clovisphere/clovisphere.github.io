@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css?v=5">
-  <!-- Apply a saved theme before first paint to avoid a flash; only "light" and "dark" are accepted -->
-  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <!-- Runs before first paint: marks JS as available (shows the JS-only controls) and applies a saved theme, accepting only "light" or "dark" -->
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
   <script src="/assets/js/main.js?v=5" defer></script>
 </head>
 <body>
@@ -40,7 +40,7 @@
     <!-- Hero: #word is rewritten by main.js; it starts as "technologist" so the page reads fine without JS -->
     <section class="wrap hero" id="top">
       <p class="eyebrow">Index — Personal site of Clovis</p>
-      <h1>Clovis is a<br><span class="hi" id="word">technologist</span><span class="caret" aria-hidden="true">_</span></h1>
+      <h1>Clovis is a<br><span class="hi" id="word" aria-live="polite">technologist</span><span class="caret" aria-hidden="true">_</span></h1>
       <div class="hero-foot">
         <p>I work where technology meets people and purpose. I can build the thing, but I'd rather start by asking if it's the right thing.</p>
         <button type="button" class="cycle" id="cycle" aria-label="Show another description"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg></button>
@@ -74,7 +74,7 @@
     <!-- 03 Work: one link per project (index, name, description, stack). Copy an existing row to add a project. -->
     <section class="wrap section" id="work" style="padding-top:32px">
       <div class="section-head"><h2>Selected work.</h2><span class="eyebrow">03 — Work</span></div>
-      <p class="group-label">Selected work</p>
+      <p class="group-label">Client work</p>
       <div class="rows">
         <a class="row" href="https://onelynk.io"><span class="idx">01</span><span class="name">OneLynk</span><span class="desc">A bulk SMS platform for organisations. Manage contacts, schedule campaigns, and track delivery.</span><span class="stack"></span></a>
         <a class="row" href="https://chezacash.com"><span class="idx">02</span><span class="name">ChezaCash</span><span class="desc">I built Aurora and Astra, the services handling M-Pesa deposits, withdrawals, and payment confirmations.</span><span class="stack">Python · Ruby · PostgreSQL</span></a>
@@ -92,7 +92,7 @@
     <!-- 04 Contact -->
     <section class="contact" id="contact">
       <div class="wrap">
-        <span class="eyebrow">04 — Contact</span>
+        <h2 class="eyebrow">04 — Contact</h2>
         <a class="big" href="mailto:clovis.mugaruka@gmail.com">Let's make<br><span>something ↗</span></a>
         <div class="foot eyebrow">
           <p>© 2026 Clovis</p>

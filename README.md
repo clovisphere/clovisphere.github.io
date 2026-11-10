@@ -34,8 +34,8 @@ Then open [localhost:8000](http://localhost:8000). Refresh the browser after mak
 
 - 💬 **Hero words:** edit the `words` list in `assets/js/main.js`. The first word is also written in `index.html`, so it shows without JavaScript.
 - 📦 **Projects:** each project is one row link in the Work section of `index.html`. Copy a row, then update its number, name, description, and stack.
-- 🎨 **Colours:** both themes are CSS variables at the top of `assets/css/style.css`. The accent and the lime highlight are `--accent` and `--pop`.
-- 🌗 **Theme:** the site follows the visitor's system setting until they use the toggle. The choice is saved in the browser.
+- 🎨 **Colours:** dark is the default and its colours are the CSS variables at the top of `assets/css/style.css`; the light theme overrides them in the `data-theme="light"` block just below. The accent and the lime highlight are `--accent` and `--pop`.
+- 🌗 **Theme:** the site opens in dark mode for everyone. The toggle switches to light, and the choice is saved in the browser.
 
 ## 📤 Publishing
 
