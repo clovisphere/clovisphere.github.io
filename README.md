@@ -24,7 +24,7 @@ Then open [localhost:8000](http://localhost:8000). Refresh the browser after mak
 | --- | --- |
 | `index.html` | The whole page: hero, about, principles, work, and contact |
 | `assets/css/style.css` | Layout, typography, themes, and responsive styles (mobile first 📱) |
-| `assets/js/main.js` | Theme toggle and the rotating hero word |
+| `assets/js/main.js` | Theme toggle, mobile menu, and the rotating hero word |
 | `assets/` | Favicon, logo, and the profile image used for social previews |
 | `404.html` | Custom not-found page |
 | `robots.txt` and `sitemap.xml` | Search engine discovery 🔍 |

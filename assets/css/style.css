@@ -31,7 +31,9 @@ h1, h2, h3, p { margin: 0; }
 :focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
 
 /* On phones the header wraps to ~150px, so anchor jumps need more clearance than the one-row desktop header */
-@media (max-width: 719px) { html { scroll-padding-top: 160px; } }
+/* Without JS the phone header still wraps (the links stay visible), so it needs the larger clearance.
+   With JS the header is one short row, and the base 72px is enough. */
+@media (max-width: 719px) { html:not(.js) { scroll-padding-top: 160px; } }
 
 /* Off-screen until focused, so keyboard users can jump past the nav */
 .skip-link { position: absolute; left: 12px; top: -60px; z-index: 20; background: var(--fg); color: var(--bg); padding: 10px 14px; }
@@ -48,16 +50,30 @@ h1, h2, h3, p { margin: 0; }
 .brand { display: flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 500; text-decoration: none; }
 .brand i { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
 .bar nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 4px; }
+.links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 4px; }
 .bar nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; text-decoration: none; }
 /* Theme toggle: 44px hit area around a 36px visible circle */
 /* The toggle and hero button need JavaScript, so they stay hidden until the .js class is set on <html> */
-.theme, .cycle { display: none; }
+.theme, .cycle, .menu-btn { display: none; }
 .js .theme { display: inline-flex; }
 .js .cycle { display: flex; }
-.theme { width: 44px; height: 44px; align-items: center; justify-content: center; border: 0; background: transparent; color: var(--fg); cursor: pointer; padding: 0; }
-.theme span { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .25s ease; }
+.theme, .menu-btn { width: 44px; height: 44px; align-items: center; justify-content: center; border: 0; background: transparent; color: var(--fg); cursor: pointer; padding: 0; }
+.theme span, .menu-btn span { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .25s ease; }
+/* Menu icon: hamburger when closed, X when open */
+.menu-btn .x { display: none; }
+.site-header.open .menu-btn .bars { display: none; }
+.site-header.open .menu-btn .x { display: block; }
 .theme .sun { display: var(--sun); }
 .theme .moon { display: var(--moon); }
+
+/* Phones with JS: the links collapse into a dropdown panel under the header, opened by the Menu button */
+@media (max-width: 719px) {
+  .js .menu-btn { display: inline-flex; }
+  .js .bar { flex-wrap: nowrap; }
+  .js .links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .js .site-header.open .links { display: flex; }
+  .js .links a { min-height: 52px; padding: 0 20px; border-top: 1px solid var(--line); }
+}
 
 /* Sections */
 .section { padding-block: 64px; }

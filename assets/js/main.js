@@ -31,6 +31,40 @@
     syncLabel();
   }
 
+  // Phone menu: the Menu button opens and closes the link panel (the CSS only collapses it on small screens).
+  var header = document.querySelector(".site-header");
+  var menuBtn = document.getElementById("menu-toggle");
+  var menu = document.getElementById("menu");
+  function setMenu(open) {
+    header.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  if (header && menuBtn && menu) {
+    menuBtn.addEventListener("click", function () {
+      setMenu(!header.classList.contains("open"));
+    });
+    // Choosing a link closes the panel so the section it jumps to is visible.
+    menu.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setMenu(false);
+    });
+    // Escape closes the panel and returns focus to the button.
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && header.classList.contains("open")) {
+        setMenu(false);
+        menuBtn.focus();
+      }
+    });
+    // A tap anywhere outside the header closes it.
+    document.addEventListener("click", function (e) {
+      if (!header.contains(e.target)) setMenu(false);
+    });
+    // Resizing up to the desktop layout resets the state so it never carries over.
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 720) setMenu(false);
+    });
+  }
+
   // Hero: the button steps through these descriptions, wrapping around at the end.
   var word = document.getElementById("word");
   var cycle = document.getElementById("cycle");
