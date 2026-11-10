@@ -51,7 +51,7 @@ existing **Publish website** workflow.
    are the system, Keep it fun).
 5. **03 Work:** hover rows in two groups, "Selected work" (OneLynk, ChezaCash,
    Alice, Omar) and "Outside client work" (Algebraconda, Blip, ODK Installer).
-   Each row: index `01`-`07` in place of the mockup's year, name, one-line
+   Each row: label `P01`-`P07` (so it differs from the `01`-`04` section numbers) in place of the mockup's year, name, one-line
    description, stack where known, and an arrow to the link. Links and
    descriptions come from the current site.
 6. **04 Contact:** "Let's make something" mailto link, plus GitHub, LinkedIn
