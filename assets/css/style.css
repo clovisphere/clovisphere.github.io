@@ -39,6 +39,9 @@ a { color: inherit; }
 h1, h2, h3, p { margin: 0; }
 :focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
 
+/* On phones the header wraps to ~150px, so anchor jumps need more clearance than the one-row desktop header */
+@media (max-width: 719px) { html { scroll-padding-top: 160px; } }
+
 /* Off-screen until focused, so keyboard users can jump past the nav */
 .skip-link { position: absolute; left: 12px; top: -60px; z-index: 20; background: var(--fg); color: var(--bg); padding: 10px 14px; }
 .skip-link:focus { top: 12px; }
