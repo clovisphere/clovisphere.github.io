@@ -1,12 +1,12 @@
 # clovisphere.github.io
 
-My little corner of the web.
+The personal site of Clovis Mugaruka, built in the **Swiss Signal** design: big type, hairline grids, a dark and light theme, and one accent colour.
 
-**[Visit the site →](https://clovisphere.github.io/)**
+**[Visit the site →](https://www.clovisphere.com/)**
 
 ## Built with
 
-Plain HTML and CSS, hosted on GitHub Pages. No framework, package installation, or build step is needed to work on the site.
+Plain HTML, CSS, and one small JavaScript file, hosted on GitHub Pages. No framework, package installation, or build step is needed. Fonts (Inter Tight and JetBrains Mono) load from Google Fonts.
 
 ## Run locally
 
@@ -22,15 +22,23 @@ Then open [localhost:8000](http://localhost:8000). Refresh the browser after mak
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Introduction, selected work, side projects, and contact links |
-| `assets/css/style.css` | Layout, typography, and responsive styles |
-| `assets/` | Profile photo, logo, and favicon |
+| `index.html` | The whole page: hero, about, principles, work, and contact |
+| `assets/css/style.css` | Layout, typography, themes, and responsive styles (mobile first) |
+| `assets/js/main.js` | Theme toggle and the rotating hero word |
+| `assets/` | Favicon, logo, and the profile image used for social previews |
 | `404.html` | Custom not-found page |
 | `robots.txt` and `sitemap.xml` | Search engine discovery |
 | `.github/workflows/` | GitHub Pages publishing workflow |
 
+## Making changes
+
+- **Hero words:** edit the `words` list in `assets/js/main.js`. The first word is also written in `index.html`, so it shows without JavaScript.
+- **Projects:** each project is one `<a class="row">` in the Work section of `index.html`. Copy a row, then update its number, name, description, and stack.
+- **Colours:** both themes are CSS variables at the top of `assets/css/style.css`. The accent and the lime highlight are `--accent` and `--pop`.
+- **Theme:** the site follows the visitor's system setting until they use the toggle. The choice is saved in the browser.
+
 ## Publishing
 
-Pushing to `main` runs the **Publish website** workflow. It copies the static files into a Pages artifact and deploys them to GitHub Pages. The workflow can also be started manually from the repository’s Actions tab.
+Pushing to `main` runs the **Publish website** workflow. It copies the static files into a Pages artifact and deploys them to GitHub Pages. The workflow can also be started manually from the repository's Actions tab.
 
-The generated `_site/` directory is ignored by Git.
+The custom domain is set in the repository's Pages settings, so the repository has no `CNAME` file. The generated `_site/` directory is ignored by Git.
