@@ -153,6 +153,11 @@ h2.eyebrow { font-weight: 400; }
   .row { grid-template-columns: 64px minmax(0, 1.1fr) minmax(0, 1.4fr) 200px; gap: 16px; align-items: baseline; padding: 28px 0; }
   .row .stack { text-align: right; }
 }
+/* Touch screens: the row nearest the middle of the screen (set by main.js while scrolling) gets the same look as the desktop hover */
+@media (hover: none) {
+  .row.is-active { background: var(--fg); color: var(--bg); padding-left: 20px; padding-right: 20px; }
+}
+
 /* Hover effects only on devices that can hover, so touch screens never get a stuck hover state */
 @media (hover: hover) {
   a:hover { color: var(--hi); }

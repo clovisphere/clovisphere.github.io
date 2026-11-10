@@ -65,6 +65,32 @@
     });
   }
 
+  // Work rows: highlight the row nearest the middle of the screen while scrolling, since touch screens have no hover.
+  // The styling lives in the (hover: none) block of style.css; on desktop the class has no visual effect.
+  var rows = [].slice.call(document.querySelectorAll(".row"));
+  if (rows.length && "IntersectionObserver" in window) {
+    // Only rows inside a thin band around the vertical centre of the viewport are candidates.
+    var inBand = new Set();
+    function updateActive() {
+      var mid = window.innerHeight / 2;
+      var best = null;
+      var bestDist = Infinity;
+      inBand.forEach(function (row) {
+        var r = row.getBoundingClientRect();
+        var dist = Math.abs(r.top + r.height / 2 - mid);
+        if (dist < bestDist) { best = row; bestDist = dist; }
+      });
+      rows.forEach(function (row) { row.classList.toggle("is-active", row === best); });
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) inBand.add(e.target); else inBand.delete(e.target);
+      });
+      updateActive();
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    rows.forEach(function (row) { observer.observe(row); });
+  }
+
   // Hero: the button steps through these descriptions, wrapping around at the end.
   var word = document.getElementById("word");
   var cycle = document.getElementById("cycle");
