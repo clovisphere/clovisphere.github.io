@@ -1,5 +1,9 @@
-/* Swiss Signal — mobile-first. Theme: light by default, dark via system or toggle. */
+/* Swiss Signal. Mobile-first: base rules target phones, min-width queries add the wider layouts.
+   Theming: the light palette is the default. Dark applies when the system prefers it and the visitor
+   has not picked a theme, or when the toggle sets data-theme="dark" on <html> (see assets/js/main.js). */
 :root {
+  /* --hi is the highlight colour: blue on light, lime on dark (lime text would be unreadable on white).
+     --accent and --pop stay fixed in both themes. --sun/--moon decide which toggle icon shows. */
   --bg: #F2F1EC; --fg: #141416; --line: #141416; --muted: #4A4A48;
   --hi: #2B4BFF; --band: #FFFFFF; --track: #D6D4CC; --body: #2E2E2C;
   --accent: #2B4BFF; --pop: #D7F75B;
@@ -8,6 +12,7 @@
   --sans: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
   color-scheme: light;
 }
+/* System dark mode, only while no theme has been chosen explicitly */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --bg: #141416; --fg: #ECEBE6; --line: #34343A; --muted: #A3A29C;
@@ -15,6 +20,7 @@
     --sun: block; --moon: none; color-scheme: dark;
   }
 }
+/* Dark mode chosen with the toggle (repeats the values above, since a selector cannot be shared with the media query) */
 :root[data-theme="dark"] {
   --bg: #141416; --fg: #ECEBE6; --line: #34343A; --muted: #A3A29C;
   --hi: #D7F75B; --band: #1C1C20; --track: #3A3A38; --body: #D9D7CF;
@@ -22,6 +28,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+/* scroll-padding-top keeps anchor targets from hiding under the sticky header */
 html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; background: var(--bg); color: var(--fg);
@@ -32,19 +39,23 @@ a { color: inherit; }
 h1, h2, h3, p { margin: 0; }
 :focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
 
+/* Off-screen until focused, so keyboard users can jump past the nav */
 .skip-link { position: absolute; left: 12px; top: -60px; z-index: 20; background: var(--fg); color: var(--bg); padding: 10px 14px; }
 .skip-link:focus { top: 12px; }
 
+/* Page-width container. Sections set padding-block only, so this horizontal padding is never overridden. */
 .wrap { max-width: 1320px; margin: 0 auto; padding-inline: 20px; }
 .eyebrow { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
 
 /* Header */
 .site-header { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+/* Header: wraps onto two lines on phones; every link keeps a 44px touch target */
 .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; padding-top: 6px; padding-bottom: 6px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
 .brand { display: flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 500; text-decoration: none; }
 .brand i { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
 .bar nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 4px; }
 .bar nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; text-decoration: none; }
+/* Theme toggle: 44px hit area around a 36px visible circle */
 .theme { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 0; background: transparent; color: var(--fg); cursor: pointer; padding: 0; }
 .theme span { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .25s ease; }
 .theme .sun { display: var(--sun); }
@@ -59,6 +70,7 @@ h1, h2, h3, p { margin: 0; }
 .hero { padding-block: 48px 40px; display: flex; flex-direction: column; gap: 32px; }
 .hero h1 { font-weight: 800; font-size: clamp(40px, 11vw, 168px); line-height: .9; letter-spacing: -.05em; overflow-wrap: break-word; }
 .hero h1 .hi, .caret { color: var(--hi); }
+/* The blinking underscore after the hero word */
 .caret { animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding-top: 24px; }
@@ -68,6 +80,7 @@ h1, h2, h3, p { margin: 0; }
 /* About */
 .band { background: var(--band); border-block: 1px solid var(--line); }
 .band .section-head .eyebrow, .muted { color: var(--muted); }
+/* Spectrum slider: the fill, dot and "ME" label all sit at 78% to mark where Clovis falls between the two ends */
 .spectrum { position: relative; height: 4px; background: var(--track); margin: 64px 0 0; }
 .spectrum .fill { position: absolute; inset: 0 auto 0 0; width: 78%; background: var(--hi); }
 .spectrum .dot { position: absolute; left: 78%; top: -18px; width: 40px; height: 40px; border-radius: 50%; background: var(--hi); border: 4px solid var(--band); transform: translateX(-50%); }
@@ -81,6 +94,7 @@ h1, h2, h3, p { margin: 0; }
 .card .n { font-family: var(--mono); font-size: 14px; color: var(--hi); }
 .card h3 { font-weight: 800; font-size: 26px; letter-spacing: -.02em; line-height: 1.1; }
 .card p { margin-top: 10px; color: var(--muted); }
+/* The highlighted card keeps the lime background and dark text in both themes */
 .card.pop { background: var(--pop); color: #141416; }
 .card.pop .n, .card.pop p { color: #141416; }
 
@@ -88,15 +102,19 @@ h1, h2, h3, p { margin: 0; }
 .group-label { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 40px 0 16px; }
 .group-label:first-of-type { margin-top: 0; }
 .rows { border-top: 1px solid var(--line); }
+/* Project row: stacked on phones. From 720px up it becomes a four-column grid (index, name, description, stack). */
 .row { display: grid; grid-template-columns: 1fr; gap: 6px; padding: 24px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: background .2s ease, padding .2s ease; }
 .row .idx, .row .stack { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .5px; }
 .row .name { font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; letter-spacing: -.03em; }
 .row .desc { font-size: 16px; line-height: 1.5; opacity: .75; max-width: 60ch; }
 .row .stack { opacity: .75; }
+/* The arrow is added with CSS so it follows the stack text, or sits alone when a project has none */
 .row .stack::after { content: " ↗"; }
+/* On phones an empty stack would leave a lone arrow on its own line, so hide it */
 @media (max-width: 719px) { .row .stack:empty { display: none; } }
 
 /* Contact */
+/* Contact block uses fixed light text on the blue accent, so it looks the same in both themes */
 .contact { background: var(--accent); color: #F2F1EC; }
 .contact .wrap { padding-top: 72px; padding-bottom: 28px; display: flex; flex-direction: column; gap: 40px; }
 .contact .big { font-weight: 800; font-size: clamp(40px, 11vw, 140px); line-height: .92; letter-spacing: -.05em; text-decoration: none; color: #F2F1EC; overflow-wrap: break-word; }
@@ -111,6 +129,7 @@ h1, h2, h3, p { margin: 0; }
 .nf h1 { font-weight: 800; font-size: clamp(44px, 11vw, 140px); line-height: .9; letter-spacing: -.05em; }
 .nf a { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 1px; font-size: 13px; }
 
+/* Tablet and up */
 @media (min-width: 720px) {
   .wrap { padding-inline: 24px; }
   .section { padding-block: 96px; }
@@ -120,6 +139,7 @@ h1, h2, h3, p { margin: 0; }
   .row { grid-template-columns: 64px minmax(0, 1.1fr) minmax(0, 1.4fr) 200px; gap: 16px; align-items: baseline; padding: 28px 0; }
   .row .stack { text-align: right; }
 }
+/* Hover effects only on devices that can hover, so touch screens never get a stuck hover state */
 @media (hover: hover) {
   a:hover { color: var(--hi); }
   .brand:hover, .row:hover, .contact a:hover { color: inherit; }
@@ -128,6 +148,7 @@ h1, h2, h3, p { margin: 0; }
   .cycle:hover { transform: rotate(180deg); }
   .row:hover { background: var(--fg); color: var(--bg); padding-left: 20px; padding-right: 20px; }
 }
+/* Respect the reduced-motion setting: no animations, transitions or smooth scrolling */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }

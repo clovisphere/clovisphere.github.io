@@ -17,11 +17,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css?v=5">
+  <!-- Apply a saved theme before first paint to avoid a flash; only "light" and "dark" are accepted -->
   <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
   <script src="/assets/js/main.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Sticky header: brand, section links, theme toggle (icons swap through CSS variables) -->
   <header class="site-header">
     <div class="wrap bar">
       <a class="brand" href="#top"><i aria-hidden="true"></i>Clovisphere</a>
@@ -35,6 +37,7 @@
     </div>
   </header>
   <main id="main">
+    <!-- Hero: #word is rewritten by main.js; it starts as "technologist" so the page reads fine without JS -->
     <section class="wrap hero" id="top">
       <p class="eyebrow">Index — Personal site of Clovis</p>
       <h1>Clovis is a<br><span class="hi" id="word">technologist</span><span class="caret" aria-hidden="true">_</span></h1>
@@ -44,6 +47,7 @@
       </div>
     </section>
 
+    <!-- 01 About: the spectrum is decorative (aria-hidden); the two paragraphs carry the meaning -->
     <section class="band" id="about">
       <div class="wrap section">
         <div class="section-head"><h2>Where I sit on the spectrum.</h2><span class="eyebrow">01 — About</span></div>
@@ -56,6 +60,7 @@
       </div>
     </section>
 
+    <!-- 02 Principles: four cards; the last one ("pop") is the highlighted card -->
     <section class="wrap section" id="principles">
       <div class="section-head"><h2>Four rules I build by.</h2><span class="eyebrow">02 — Principles</span></div>
       <div class="cards">
@@ -66,6 +71,7 @@
       </div>
     </section>
 
+    <!-- 03 Work: one link per project (index, name, description, stack). Copy an existing row to add a project. -->
     <section class="wrap section" id="work" style="padding-top:32px">
       <div class="section-head"><h2>Selected work.</h2><span class="eyebrow">03 — Work</span></div>
       <p class="group-label">Selected work</p>
@@ -83,6 +89,7 @@
       </div>
     </section>
 
+    <!-- 04 Contact -->
     <section class="contact" id="contact">
       <div class="wrap">
         <span class="eyebrow">04 — Contact</span>
