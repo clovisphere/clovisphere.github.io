@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clovisphere.github.io/sitemap.xml
+Sitemap: https://www.clovisphere.com/sitemap.xml
